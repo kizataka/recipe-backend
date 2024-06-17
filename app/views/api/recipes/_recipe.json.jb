@@ -1,0 +1,9 @@
+{
+    id: dish.id,
+    title: dish.title,
+    description: dish.description,
+    image: dish.image,
+    user: render(partial: 'api/users/user', locals: { user: dish.user}),
+    created_at: dish.created_at,
+    updated_at: dish.updated_at
+}
