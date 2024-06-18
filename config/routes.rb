@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resource :account, only: %i[create]
     resources :users, only: %i[show]
     resource :session, only: %i[create destroy]
-    resources :recipes, only: %i[index create show update destroy]
+    resources :dishes, only: %i[index create show update destroy]
 
     namespace :me do
       resource :account, only: %i[update]
