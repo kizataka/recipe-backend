@@ -4,5 +4,5 @@ class User < ApplicationRecord
     validates :email, presence:true, uniqueness: true
     validates :password_digest, presence: true
 
-    has_many :dishes
+    has_many :dishes, dependent: :destroy
 end
