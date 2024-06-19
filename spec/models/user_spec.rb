@@ -38,4 +38,17 @@ RSpec.describe User, type: :model do
       expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
   end
+  
+  describe "ユーザーの関連付けに関するテスト" do
+    before do
+      @user = FactoryBot.create(:user)
+    end
+  
+    it "dishesとの関連付けが正しく設定されていること" do
+      # ユーザーと関連付けされたレシピを作成
+      dish = FactoryBot.create(:dish, user: @user)
+      # @user.dishesを実行した際に、作成したレシピを含んでいるかを確認
+      expect(@user.dishes).to include dish
+    end
+  end
 end
