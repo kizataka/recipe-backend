@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
     end
 
     def not_authenticated
-        render json: { error: { messages: ['ログインしてください'] } }, status: unauthorized
+        render json: { error: { messages: ['ログインしてください'] } }, status: :unauthorized
     end
 end
