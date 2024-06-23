@@ -50,4 +50,4 @@ end
 
 gem 'jb'
 gem 'jwt'
-
+gem 'kaminari'
