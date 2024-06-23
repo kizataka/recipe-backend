@@ -1,0 +1,101 @@
+---
+openapi: 3.0.3
+info:
+  title: recipe_share
+  description: レシピ共有アプリAPI
+  version: 1.0.11
+servers: []
+paths:
+  "/api/account":
+    $ref: "./paths/accounts.yml#/account"
+  "/api/dishes":
+    $ref: "./paths/dishes.yml#/dishes"
+  "/api/dishes/{id}":
+    $ref: "./paths/dishes.yml#/dish"
+  "/api/session":
+    $ref: "./paths/sessions.yml#/session"
+  "/api/users":
+    $ref: "./paths/users.yml#/users"
+  "/api/users/{id}":
+    $ref: "./paths/users.yml#/user"
+components:
+  schemas:
+    AuthUser:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+      required:
+      - id
+      - name
+      - email
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      required:
+      - id
+      - name
+    Dish:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        title:
+          type: string
+        user:
+          $ref: "#/components/schemas/User"
+        description:
+          type: string
+        image:
+          type: string
+          format: binary
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      required:
+        - id
+        - user_id
+        - title
+        - user
+        - description
+        - image
+        - created_at
+        - updated_at
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            messages:
+              type: array
+              items:
+                type: string
+          required:
+          - messages
+      required:
+      - error
+    Paging:
+      type: object
+      properties:
+        total_pages:
+          type: integer
+        total_count:
+          type: integer
+        current_page:
+          type: integer
+      required:
+      - total_pages
+      - total_count
+      - current_page
