@@ -3,7 +3,7 @@ class Api::RecipesController < ApplicationController
     PER_PAGE = 10
 
     def index
-        @dishes = Dish.inclues(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+        @dishes = Dish.includes(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
 
     def show
