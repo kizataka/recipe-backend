@@ -1,0 +1,53 @@
+account:
+  post:
+    summary: create
+    tags:
+      - Api::Account
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+              password_confirmation:
+                type: string
+            required:
+              - name
+              - email
+              - password
+              - password_confirmation
+          example:
+            name: taka
+            email: taka@example.com
+            password: '12345678'
+            password_confirmation: '12345678'
+    responses:
+      '200':
+        description: ユーザーが作成できること
+        content:
+          application/json:
+            schema:
+              $ref: '../openapi.yaml#/components/schemas/AuthUser'
+            example:
+              id: 1
+              name: taka
+              email: taka@example.com
+      '422':
+        description: ユーザーの作成に失敗すること
+        content:
+          application/json:
+            schema:
+              $ref '../openapi.yaml#/components/schemas/Error'
+            example:
+              error:
+                messages:
+                  - Password can't be blank
+                  - Name can't be blank
+                  - Email can't be blank
+                  - Password digest can't be blank

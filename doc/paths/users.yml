@@ -1,0 +1,23 @@
+user:
+  get:
+    summary: show
+    tags:
+      - Api::User
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 1
+    responses:
+      '200':
+        description: ユーザーの詳細が取得できること
+        content:
+          application/json:
+            schema:
+              $ref: "../openapi.yaml#/compoenets/schemas/User"
+            example:
+              id: 1
+              name: test name
+              email: test@example.com

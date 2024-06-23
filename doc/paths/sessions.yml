@@ -1,0 +1,45 @@
+session:
+  post:
+    summary: create
+    tags:
+      - Api::Session
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+            required:
+              - email
+              - password
+          example:
+            email: jules@klein.example
+            password: '12345678'
+    responses:
+      '200':
+        description: ログインに成功すること
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+              required:
+                - token
+            example:
+              token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.8OWDQqeJCVLJpztzS4IrfXJhiafqeSXkKzNRtNnHfz0
+      '401':
+        description: ログインに失敗すること
+        content:
+          application/json:
+            schema:
+              $ref: '../openapi.yaml#/components/schemas/Error'
+            example:
+              error:
+                messages:
+                  - メールアドレスまたはパスワードに誤りがあります。
