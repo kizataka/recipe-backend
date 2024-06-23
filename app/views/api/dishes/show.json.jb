@@ -1,1 +1,1 @@
-render partial: 'api/recipes/dish', locals: { dish: @dish }
+render partial: 'api/dishes/dish', locals: { dish: @dish }
