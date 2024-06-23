@@ -1,9 +1,9 @@
-class Api::RecipesController < ApplicationController
+class Api::DishesController < ApplicationController
     before_action :authenticate, only: %i[create update destroy]
     PER_PAGE = 10
 
     def index
-        @dishes = Dish.inclues(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+        @dishes = Dish.includes(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
     end
 
     def show
