@@ -1,4 +1,4 @@
-class Api::RecipesController < ApplicationController
+class Api::DishesController < ApplicationController
     before_action :authenticate, only: %i[create update destroy]
     PER_PAGE = 10
 
