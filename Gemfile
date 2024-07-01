@@ -51,3 +51,4 @@ end
 gem 'jb'
 gem 'jwt'
 gem 'kaminari'
+gem 'rack-cors'
