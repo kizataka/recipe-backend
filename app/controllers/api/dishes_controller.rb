@@ -3,7 +3,11 @@ class Api::DishesController < ApplicationController
     PER_PAGE = 10
 
     def index
-        @dishes = Dish.includes(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+        if params[:user_id]
+            @dishes = Dish.where(user_id: params[:user_id]).includes(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+        else
+            @dishes = Dish.includes(:user).order(created_at: :desc).page(params[:page]).per(PER_PAGE)
+        end
     end
 
     def show
@@ -30,6 +34,7 @@ class Api::DishesController < ApplicationController
     private
 
     def dish_params
-        params.permit(:title, :description, :image)
+        # params.permit(:title, :description, :image)
+        params.permit(:title, :description)
     end
 end
